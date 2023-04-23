@@ -1,7 +1,11 @@
 import { ActionContext } from 'vuex'
 import { RootState } from '../index'
-export type UserState = {}
-const state: UserState = {}
+export type UserState = {
+  user: string
+}
+const state: UserState = {
+  user: ''
+}
 
 const mutations = {}
 

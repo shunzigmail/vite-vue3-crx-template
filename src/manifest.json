@@ -15,8 +15,9 @@
     "default_popup": "/popup/index.html"
   },
   "permissions": [
+    "alarms",
+    "notifications",
     "cookies",
-    "all_urls",
     "tabs",
     "contextMenus",
     "activeTab",
@@ -30,6 +31,7 @@
   },
   "background": {
     "service_worker": "/background/index.js"
+    
   },
   "content_scripts": [
     {

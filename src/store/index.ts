@@ -1,5 +1,5 @@
 import { InjectionKey } from 'vue'
-import { createStore, useStore as baseUseStore, Store, Module } from 'vuex'
+import { createStore, useStore as baseUseStore, Store } from 'vuex'
 import getters from './getters'
 import { AppState } from './modules/app'
 import { UserState } from '@/store/modules/user'
@@ -16,17 +16,15 @@ const moduleFiles = import.meta.glob('./modules/*.ts', { eager: true })
 const modules = {}
 for (const modulePath in moduleFiles) {
   const storeName = modulePath.replace(/^\.\/modules\/(\w+)\.ts$/, '$1')
-  modules[storeName] = (moduleFiles[modulePath] as Module).default
+  modules[storeName] = (moduleFiles[modulePath] as any).default
 }
-
 export const key: InjectionKey<Store<RootState>> = Symbol()
 const store = createStore<RootState>({
-  strict: process.env.NODE_ENV !== 'production',
+  strict: false,
   mutations: {},
   actions: {},
   getters,
   modules,
-
   plugins: [
     createPersistedState({
       storage: window.sessionStorage,

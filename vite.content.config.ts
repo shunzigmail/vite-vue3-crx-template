@@ -14,7 +14,7 @@ export default defineConfig({
     watch: __DEV__ ? {} : null,
     cssCodeSplit: false,
     emptyOutDir: false,
-    sourcemap: false,
+    sourcemap: true,
     outDir: r(`${outputDir}/contentScript`),
     rollupOptions: {
       input: {

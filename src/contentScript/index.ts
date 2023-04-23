@@ -1,6 +1,8 @@
 import { createApp } from 'vue'
 import 'element-plus/dist/index.css'
 import App from './App.vue'
+import store, { key } from '@/store'
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 ;(() => {
   const rootIdName = 'vite_crx_content_script'
   const beforeRoot = document.querySelector(`#${rootIdName}`)
@@ -20,5 +22,9 @@ import App from './App.vue'
   document.body.appendChild(container)
 
   const app = createApp(App)
+  for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+    app.component(key, component)
+  }
+  app.use(store, key)
   app.mount(root)
 })()

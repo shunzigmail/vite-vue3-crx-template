@@ -30,7 +30,7 @@ export const commonConfig = {
   plugins: [
     Vue(),
     eslintPlugin({
-      include: ['src/**/*.js', 'src/**/*.vue', 'src/*.js', 'src/*.vue']
+      include: ['src/**/*.js', 'src/**/*.vue', 'src/*.js', 'src/*.vue','src/**/*.ts']
     })
   ],
 }
